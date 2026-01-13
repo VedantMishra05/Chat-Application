@@ -1,12 +1,14 @@
+package UI;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
-public class Server extends JFrame implements ActionListener{
-
-    public Server() {
-
+public class WhatsappInterface extends JFrame implements ActionListener {
+    String name;
+    String profilePicPath;
+    public WhatsappInterface (String name, String profilePicPath, int locationX, int locationY) {
+        this.name = name;
+        this.profilePicPath = profilePicPath;
         // Settign the layout to border
         setLayout(null);
 
@@ -28,7 +30,7 @@ public class Server extends JFrame implements ActionListener{
         });
 
         // Adding profile pic
-        p1.add(iconLabel("icons/1.png", 40, 10, 50, 50));
+        p1.add(iconLabel(this.profilePicPath, 40, 10, 50, 50));
 
         // Adding video icon
         p1.add(iconLabel("icons/video.png", 300, 20, 30, 30));
@@ -40,7 +42,7 @@ public class Server extends JFrame implements ActionListener{
         p1.add(iconLabel("icons/3icon.png", 420, 20, 10, 25));
 
         // Adding name
-        p1.add(textLabel("Vedant", 110, 15, 100, 18, 18));
+        p1.add(textLabel(this.name, 110, 15, 100, 18, 18));
         
         // Adding status (active now)\
         p1.add(textLabel("Active Now", 110, 35, 100, 18, 10));
@@ -69,14 +71,14 @@ public class Server extends JFrame implements ActionListener{
         
         // Setting the size of the window
         setSize(450, 700);
-        setLocation(200, 50);
+        setLocation(locationX, locationY);
         setUndecorated(true);
         getContentPane().setBackground(Color.WHITE);
         
         // Making the window visible
         setVisible(true);
     }
-    
+
     // Function to create label in the desired location with file paths
     public JLabel textLabel(String text, int x, int y, int width, int height, int fontSize) {
         JLabel element = new JLabel(text);
@@ -101,10 +103,6 @@ public class Server extends JFrame implements ActionListener{
         ImageIcon i3 = new ImageIcon(i2);
         JLabel back = new JLabel(i3);
         return back;
-    }
-    
-    public static void main(String[] args) {
-        new Server();
     }
 
     @Override
